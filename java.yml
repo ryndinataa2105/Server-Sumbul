@@ -1,1 +1,23 @@
+name: Java CI dengan Maven
 
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up JDK 16
+      uses: actions/setup-java@v4
+      with:
+        java-version: '16'
+        distribution: 'temurin' 
+        
+    - name: Build dengan Maven
+      run: mvn clean install
